@@ -34,11 +34,8 @@ map_sf<- read_sf("data/shapeData/south.shp")
 # https://www.openicpsr.org/openicpsr/project/108164/version/V3/view?path=/openicpsr/108164/fcr:versions/V3/county_ucr_offenses_known_1960_2017_dta.zip&type=file
 
 # UCR DATA
-dat2 <- read_dta("UCR_arrests/county_ucr_offenses_known_yearly_1960_2017.dta")
-colnames(dat1)[1] <- "id"
-dat2 <- dat2[dat2$year == "1990",]
-dat2$fips_state_county<- as.numeric(dat2$fips_state_county)
-
+# Only UCR data from 1990 (This was the only year used in the paper), full file was too big for github
+dat2 <- readRDS("data/UCR_arrests/county_ucr_offenses_known_1990.RDS")
 
 map_sf2 <- merge(x = map_sf,y = dat2,by.x = "FIPSNO",by.y = "fips_state_county")
 
