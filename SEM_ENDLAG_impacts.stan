@@ -134,10 +134,3 @@ generated quantities{
   total3 = mean(part_deriv3);
   indirect3 = (total3 - direct3)/2;
 }
-
-
-
-
-
-
-
